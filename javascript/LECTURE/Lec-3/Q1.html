@@ -14,6 +14,7 @@
         // students.push(newStudent);
         a=0;
         document.write('<div class="container">');
+            outer:
             for (j = 0; j < ((students.length)/4); j++) {
                 document.write('<div class="row mt-5">');
                 
@@ -27,6 +28,9 @@
                     document.write('<a href="#" class="btn btn-primary">Go somewhere</a>');
                     document.write('</div></div></div>');
                     a++;
+                    if(a==students.length){
+                        break outer;
+                    }
                 }
             document.write('</div>');
             }
