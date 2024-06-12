@@ -1,15 +1,14 @@
 import java.util.Scanner;
-public class Q14 {
+public class Q15 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.println("enter m");
-        int m = sc.nextInt();
-        System.out.println("enter n");
+        System.out.println("enter number");
         int n=sc.nextInt();
         int sum=0;
-        for(int i=m;i<=n;i++){
+        for(int i=1;i<=n;i++){
             sum += i;
         }
-        System.out.println(sum);
+        double avg = (double)sum/n;
+        System.out.println(avg);
     }
 }
