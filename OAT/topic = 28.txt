@@ -1,0 +1,4 @@
+topic = 28
+subtopic (1. , 2.) = 16
+subtopic(1.1 , 2.2) = 14
+content = 12

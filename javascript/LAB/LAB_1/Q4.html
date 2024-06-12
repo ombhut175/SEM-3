@@ -1,0 +1,37 @@
+<!-- fibonacci -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        n = parseInt(prompt("enter number"));
+        fibSeriesAvailable = true;
+        a=0,b=1;
+        fibSeries=a+", "+b;
+        for(i=2;;i++){
+            nextNumber = a+b;
+            fibSeries = fibSeries + ", " +nextNumber;
+            a=b;
+            b=nextNumber;
+            if(nextNumber == n){
+                fibSeriesAvailable = true;
+                break;
+            }
+            else if(nextNumber>n){
+                fibSeriesAvailable  = false;
+                break;
+            }
+        }
+        if(fibSeriesAvailable==true){
+            document.write("fibonacci series = "+fibSeries);
+        }
+        else{
+            document.write("fibonacci series not available");
+        }
+    </script>
+</body>
+</html>

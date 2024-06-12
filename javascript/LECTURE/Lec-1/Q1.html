@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+            function changeColor(){
+                
+                a = Math.floor(Math.random()*256);
+                // document.write(a+"<br>");
+                b = Math.floor(Math.random()*256);
+                // document.write(b+"<br>");
+                c = Math.floor(Math.random()*256);
+                // document.write(c+"<br>");
+                document.body.style.backgroundColor = `rgb(${a},${b},${c})`;
+            }
+
+            setInterval(changeColor,1000);
+        
+    </script>
+</body>
+</html>
