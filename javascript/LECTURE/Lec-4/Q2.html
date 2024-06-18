@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array of Objects</title>
+</head>
+<body>
+    <script>
+        // students={
+        //     name,
+        //     age,
+        //     gender,
+        //     branch
+        // };
+        studentsArr=[
+            {name : "om",
+             age : 18,
+             gender : "male",
+             branch : "btech"
+            },
+            {name : "dhruv",
+             age : 19,
+             gender : "male",
+             branch : "bca"
+            },
+            {name : "jay",
+             age : 20,
+             gender : "male",
+             branch : "bsc(it)"
+            },
+            {name : "dhvani",
+             age : 18,
+             gender : "female",
+             branch : "btech"
+            }
+        ]
+
+            document.write("<table border='0px'>");
+                for(i=0;i<studentsArr.length;i++){
+                    document.write("<tr>");
+                        document.write("<td>"+studentsArr[i].name+"</td>");
+                        
+                    document.write("</tr>");
+                }
+            document.write("<table>");
+
+        console.log(studentsArr);
+    </script>
+</body>
+</html>

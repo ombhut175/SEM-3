@@ -1,0 +1,71 @@
+<!-- Write an HTML page with JavaScript that takes a number from popup box in the range 0-
+999 and display it in words. If the number is out of range, it should show “out of range” and
+if it is not a number ,it should show “not a number” message in the result box -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        n=parseInt(prompt("enter value"));
+        if(n>999 || n<0){
+            document.write("number out of range");
+           
+        }
+        else if(isNaN(n)){
+            document.write("enter only integer value");
+           
+        }
+        else{
+            a = ["one","two","three","four","five","six","seven","eigth","nine","ten"];
+            b = ["eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen","twenty"];
+            c = ["thirty","fourty","fifty","sixty","seventy","eighty","ninty","hundred"];
+            result = "";
+            if(n<=10){
+                result = a[n-1];
+                document.write(result);
+            }
+            else if(n<=20){
+                result = b[n-11];
+                document.write(result); 
+            }
+            else if(n>20 && n<=100){
+                rem = parseInt (n%10);
+                firstTwoDigit = n-rem;
+                firstDigit = parseInt(firstTwoDigit/10);
+                result = c[firstDigit-3];
+                document.write(result+" ");
+                console.log(rem);
+                if(rem>0){
+                    remResult = a[rem-1];
+                    console.log(remResult);
+                    document.write(remResult);
+                }
+            }
+            else if(n>100 && n<=999){
+                firstDigit = parseInt(n/100);
+                result = a[firstDigit-1];
+                document.write(result+" ");
+                document.write(c[7]+" ");
+                lastTwo = n % 100;
+                if(lastTwo>0){
+                    
+                    rem = lastTwo % 10;
+                    lastTwoDigit = lastTwo-rem;
+                    lastSecond = parseInt (lastTwoDigit/10);
+                    result = c[lastSecond-3];
+                    document.write(result+" ");
+                    if(rem>0){
+                        remResult = a[rem-1];
+                        document.write(remResult);
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

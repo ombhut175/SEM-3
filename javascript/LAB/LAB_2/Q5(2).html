@@ -1,0 +1,26 @@
+<!-- 5. Write a JavaScript to take 2-digit number and then separate these 2 digits, then multiply
+ƒrst digit by itself and then second digit times that value-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        s = prompt("enter 2 numbers");
+        length = s.length
+        ch = new Array();
+        for(i=0;i<length;i++){
+            ch[i] = parseInt(s.charAt(i));
+        }
+        multiply = ch[0] * ch[0];
+        secondMultiply = 1;
+        for(j=1;j<=ch[1];j++){
+            secondMultiply = secondMultiply * multiply;
+        }
+        document.write(secondMultiply);
+    </script>
+</body>
+</html>

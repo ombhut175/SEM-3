@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays</title>
+</head>
+<body>
+    <script>
+        arr = [ ["om",18,"male","bTech"],
+                ["dhruv",19,"male","bca"] ]
+        console.log(arr);
+        document.write("<table border = '1px' cellspacing='0px' cellpadding='10px'>");
+        for(i=0;i<arr.length;i++){
+            document.write("<tr>");
+                // for(j=0;j<arr[i].length;j++){
+                    document.write("<td>"+arr[i][2]+"</td>");
+                // }
+            document.write("</tr>");
+        }
+
+        
+        document.write("</table>");
+    </script>
+</body>
+</html>
