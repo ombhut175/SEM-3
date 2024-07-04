@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box">box 1</div>
+    <div class="box">box 2</div>
+    <div class="box">box 3</div>
+    <script>
+        let a = document.querySelectorAll(".box");
+        a[0].innerText = a[0].innerText+" new text 1";
+        a[1].innerText = a[1].innerText+" new text 2";
+        a[2].innerText = a[2].innerText+" new text 3";
+
+        // console.log(a);
+        // console.dir(a);
+    </script>
+</body>
+</html>

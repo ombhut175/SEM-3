@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        arr=[1,4,2,6,9,6,7];
+        // arr.forEach(function(val){
+        //     console.log(val);
+        // });
+        // arr.forEach((val , idx)=>{
+        //     console.log(val,idx);
+        // })
+        newarr = arr.filter((val , idx)=>{
+            return val%2==0;
+        })
+        console.log(newarr);
+    //    let arrowSum= (a,b)=>{
+    //         console.log(a+b);
+    //     };
+    //     let arroMulti = (a,b)=>{
+    //          console.log(a*b);
+    //         return a*b;
+    //     }
+    </script>
+</body>
+</html>

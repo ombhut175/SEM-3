@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .light{
+            background-color: white;
+            color: black;
+        }
+        .dark{
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn-1">change mod</button>
+   <script>
+    let btn = document.getElementById("btn-1");
+    let body = document.querySelector("body");
+    // btn.onclick=()=>{
+
+    // }
+    let count=0;
+    // let light=()=>{
+    //     body.style.backgroundColor="white"; 
+    // };
+    // let dark = ()=>{
+    //     body.style.backgroundColor="black";
+    //     console.log(count);
+    //     count++;
+    //     // console.log("clicked");
+    // };
+    let mode = "light";
+    
+        btn.addEventListener("click",()=>{
+            if (mode === "light") {
+                mode = "dark";
+                body.classList.remove("light");
+                body.classList.add("dark");
+            } else {
+                mode = "light";
+                body.classList.remove("dark");
+                body.classList.add("light");
+            }
+        });
+    
+    
+   </script>
+</body>
+</html>

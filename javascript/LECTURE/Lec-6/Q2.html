@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let n = parseInt(prompt("enter number"));
+        let arr=[];
+        for(i=1;i<=n;i++){
+            // arr[i-1]= parseInt(prompt("enter value of "+(i+1)));
+            arr[i-1]=i;
+        }
+        let sum=arr.reduce((prev,next)=>{
+            return prev+next;
+        });
+        console.log(sum);
+        let product = arr.reduce((prev,next)=>{
+            return prev*next;
+        });
+        console.log(product);
+    </script>
+</body>
+</html>

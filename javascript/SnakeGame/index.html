@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Game</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="buttons">
+        <button class="btn btn-secondary" id="upBtn" onclick="setUp()">
+            <img src="arrowUpward.svg" alt="">
+        </button>
+        <button class="btn btn-secondary" id="downBtn" onclick="setDown()">
+            <img src="arrow_downward_24dp_FILL0_wght400_GRAD0_opsz24.svg" alt="">
+        </button>
+        <button class="btn btn-secondary" id="leftBtn" onclick="setLeft()">
+            <img src="arrow_back_24dp_FILL0_wght400_GRAD0_opsz24.svg" alt="">
+        </button>
+        <button class="btn btn-secondary" id="righgtBtn" onclick="setRight()">
+            <img src="arrow_forward_24dp_FILL0_wght400_GRAD0_opsz24.svg" alt="">
+        </button>
+    </div>
+
+    <div id="snake">
+        <img id="snake-img" src="kisspng-snake-cartoon-clip-art-snake-cartoon-5adfd35ccfb7c5.4625450915246180768508-removebg-preview.png" alt="">
+    </div>
+    <br>
+    <div id="food"><img src="food.png" alt=""></div>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn1">click me</button>
+    <script>
+        let b1 = document.getElementById("btn1");
+        b1.onclick=(e)=>{
+            console.log("i am clicked");
+            b1.style.backgroundColor="Red";
+            console.log(e);
+            console.log(e.type);
+            console.log(e.target);
+
+        }
+
+    </script>
+</body>
+</html>

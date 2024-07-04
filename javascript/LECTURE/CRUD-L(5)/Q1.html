@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        #result{
+            margin: 20px;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="getInput">
+      <input type="text" id="input-1" />
+      <br>
+      <button onclick="addNew()" id="button-click">Add</button>
+      <span id="warning"></span>
+    </div>
+    <div id="result">
+        
+    </div>
+    <script>
+
+     var c=0;
+    var i=0;
+
+      arr = ["om", "jay", "dhruv"];
+
+        function displayStudent(){
+          
+            temp = document.getElementById('result');
+            tempString = "";
+            tempString += "<table border='1'>";
+                for(i=0;i<arr.length;i++){
+                    tempString+="<tr>";
+                        tempString+="<td>" + arr[i] +"</td>";
+                        tempString+="<td><button onclick='deleteStudents("+i+")'> Delete </button></td>";
+                        tempString+="<td><button onclick='editStudents("+i+")'> Edit </button></td>";
+                        tempString+="</tr>";
+                }
+                tempString+="</table>";
+            temp.innerHTML=tempString;
+        }
+        displayStudent();
+        
+      function addNew() {
+        if(c==0){
+
+          warn = document.getElementById('warning');
+          
+          a = document.getElementById('input-1');
+          if(a.value==""){
+            warn.style.color="red";
+            warn.innerHTML="Enter valid input";
+          }
+         else{
+          arr.push(a.value);
+          a.value="";
+          warn.innerHTML="";
+          displayStudent();
+         }
+        }else{
+          addedity();
+          b = document.getElementById('button-click');
+          b.innerHTML="Add";
+          c=0;
+          document.getElementById('input-1').value="";
+        }
+      
+      }
+      function deleteStudents(index){
+        arr.splice(index,1);
+        displayStudent();
+      }
+
+      function editStudents(index){
+        i=index;
+        c=1;
+        a=document.getElementById('input-1');
+        a.value = arr[index];
+        b = document.getElementById('button-click');
+        b.innerHTML="Edit";
+      }
+
+      function addedity(){
+        ivalue = document.getElementById('input-1');
+        arr[i]=ivalue.value;
+        displayStudent();
+      }
+
+     
+    </script>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="handleClick()" ondblclick="handleDoubleClick()" onmouseover="handleHover()" onmouseleave="handleMouseLeave()">
+        Click me
+    </button>
+    <div id="result"></div>
+    
+    <script>
+        let result = document.getElementById('result');
+
+        function handleClick() {
+            result.innerHTML = "Single click";
+        }
+
+        function handleDoubleClick() {
+            result.innerHTML = "Double clicked";
+        }
+
+        function handleHover() {
+            result.innerHTML = "Hover";
+        }
+        function handleMouseLeave(){
+            result.innerHTML="mouse leave";
+        }
+    </script>
+</body>
+</html>

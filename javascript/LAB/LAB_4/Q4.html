@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+    
+    <script>
+        // students = ["om", "jaimin", "raj","het","keyur","harsh","pranjal","jayant"];
+        // newStudent = prompt("enter name of new student");
+        // students.push(newStudent);
+        n  = parseInt(prompt("enter number of products"));
+        students=[];
+        for(i=0;i<n;i++){
+            students[i] = (prompt("enter name of product "+(i+1)));
+        }
+        a=0;
+        document.write('<div class="container">');
+            outer:
+            for (j = 0; j < ((students.length)/4); j++) {
+                document.write('<div class="row mt-5">');
+                
+                for(i = 0; i < ((students.length)/(students.length/4)); i++) {
+                    document.write('<div class="col-12 col-lg-3 mb-4">');
+                    document.write('<div class="card" style="width: 18rem;">');
+                    document.write('<img src="https://via.placeholder.com/150" class="card-img-top" alt="...">');
+                    document.write('<div class="card-body">');
+                    document.write('<h5 class="card-title">' + students[a] + '</h5>');
+                    document.write('<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card\'s content.</p>');
+                    document.write('<a href="#" class="btn btn-primary">Go somewhere</a>');
+                    document.write('</div></div></div>');
+                    a++;
+                    if(a==students.length){
+                        break outer;
+                    }
+                }
+            document.write('</div>');
+            }
+        document.write('</div>');
+    </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

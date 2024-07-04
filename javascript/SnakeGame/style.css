@@ -1,0 +1,37 @@
+body{
+    background-color: black;
+}
+/* #upBtn{
+    position: absolute;
+    right: 70px;
+    bottom: 70px;
+} */
+
+#upBtn{
+    position: relative;
+    
+}
+
+#buttons{
+    position: absolute;
+    right: 50px;
+    bottom: 50px;
+}
+#snake img{
+    height: 50px;
+    width: 80px;
+    transform: scaleX(-1);
+}
+#snake{
+    position: absolute;
+    /* left: -50px; */
+    /* display: inline-block; */
+}
+#food img{
+    /* position: absolute; */
+    /* display: inline-block; */
+    height: 30px;
+    width: 30px;
+    /* left: 500px; */
+    /* background-color: white; */
+}
