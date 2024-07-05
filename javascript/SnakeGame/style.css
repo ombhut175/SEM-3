@@ -35,3 +35,14 @@ body{
     /* left: 500px; */
     /* background-color: white; */
 }
+#score{
+    color: white;
+}
+#bomb img{
+    height: 50px;
+    width: 60px;
+}
+#bomb{
+    height: 50px;
+    width: 60px;
+}
