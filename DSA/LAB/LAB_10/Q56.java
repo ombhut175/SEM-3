@@ -1,6 +1,6 @@
 
 
-public class Q1 {
+public class Q56 {
     public static void main(String[] args) {
         Node a = new Node(1);
         Node b = new Node(4);

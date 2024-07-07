@@ -1,0 +1,53 @@
+body {
+    background-color: black;
+  }
+  /* #upBtn{
+      position: absolute;
+      right: 70px;
+      bottom: 70px;
+  } */
+  
+  #upBtn {
+    position: relative;
+  }
+  .container1 {
+    height: 100vh;
+    width: 100vw;
+  }
+  #buttons {
+    position: absolute;
+    right: 50px;
+    bottom: 50px;
+  }
+  #snake img {
+    height: 80px;
+    width: 120px;
+    transform: scaleX(-1);
+  }
+  #snake {
+    position: absolute;
+    /* left: -50px; */
+    /* display: inline-block; */
+  }
+  #food img {
+    /* position: absolute; */
+    /* display: inline-block; */
+    height: 50px;
+    width: 70px;
+    /* left: 500px; */
+    /* background-color: white; */
+  }
+  #food {
+    position: absolute;
+  }
+  #score {
+    color: white;
+  }
+  #bomb img {
+    height: 50px;
+    width: 60px;
+  }
+  #bomb {
+    height: 50px;
+    width: 60px;
+  }
