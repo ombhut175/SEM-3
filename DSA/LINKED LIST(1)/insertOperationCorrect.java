@@ -1,6 +1,7 @@
+// package classWork;
 import java.util.Scanner;
 
-public class Q57 {
+public class insertOperationCorrect {
 	static Node head;
 	static Node tail;
 	static Scanner sc = new Scanner(System.in);
@@ -21,6 +22,8 @@ public class Q57 {
 		}
 		n.next=head;
 		head=n;
+		// head=first;
+
 	}
 	public static void insertAtLast(int x){
 		if(head==null){
@@ -43,47 +46,18 @@ public class Q57 {
 			tail=middNode;
 			return;
 		}
-		if(middNode.data<head.data){
-			middNode.next=head;
-			head=middNode;
-			return;
-		}
 		Node temp=middNode;
+		// System.out.println("temp.data = "+temp.data);
 		Node temp2=head ;
-		Node pre=null;
-		while(temp2!=null && temp.data>temp2.data){
-			pre=temp2;
+		while(temp.data>temp2.next.data && temp2.next!=null){
+			// System.out.println("temp 2.data = "+temp2.data);
 			temp2=temp2.next;
 		}
-		if(temp2==null){
-			pre.next=temp;
-		}
-		else{
-			pre.next=temp;
-			temp.next=temp2;
-		}
-	}
-	public static void delete(Node x){
-		if(head==null){
-			System.out.println("underflow");
-			return;
-		}
-		Node save=head;
-		Node pre = null;
-		while(save!=x && save!=null){
-			pre=save;
-			save=save.next;
-		}
-		if(save!=x){
-			System.out.println("node not found");
-			return;
-		}
-		if(save==head){
-			head=head.next;
-		}
-		else{
-			pre.next=x.next;
-		}
+		temp.next=temp2.next;
+		temp2.next=temp;
+		// System.out.println("temp.next "+temp.data+" temp2.next "+temp2.data);
+		// System.out.println("temp2.next "+temp2.data+" temp = "+temp.data);
+		
 	}
 	public static void display() {
 		// System.out.println("loop entered display");
@@ -118,7 +92,7 @@ public class Q57 {
 		// display()
 		boolean flag=true;
 		while (flag) {
-			System.out.println("1 for \"insertAtFirst\" 2 for \"last\" 3 for \"insord\" 4 for \"delete\" 5 for \"exit\"");
+			System.out.println("1 for \"insertAtFirst\" 2 for \"last\" 3 for \"insord\" 4 for \"exit\"");
             int check = sc.nextInt();
 			switch (check) {
 				case 1:
@@ -140,27 +114,11 @@ public class Q57 {
 					display();
 					break;
 				case 4:
-				if(head==null){
-					System.out.println("list is empty");
-					break;
-				}
-					System.out.println("enter node to delete");
-					int delete=sc.nextInt();
-					Node temp=head;
-					while (temp!=null && delete!=temp.data) {
-						temp=temp.next;
-					}
-					if(temp==null){
-						System.out.println("node not found");
-						break;
-					}
-					delete(temp);
-					display();
-					break;
-				case 5:
 					flag=false;
 					break;
 			}
 		}
+		
+		
 	}
 }
