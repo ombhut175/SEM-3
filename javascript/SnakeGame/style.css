@@ -35,6 +35,9 @@ body{
     /* left: 500px; */
     /* background-color: white; */
 }
+#food{
+    position: absolute;
+}
 #score{
     color: white;
 }
@@ -43,6 +46,9 @@ body{
     width: 60px;
 }
 #bomb{
+    position: absolute;
     height: 50px;
     width: 60px;
+    display: inline-block;
+
 }

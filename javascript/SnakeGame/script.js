@@ -2,8 +2,8 @@ let snake = document.getElementById('snake');
 let left=0;
 let top1=0;
 let leftSide,rightSide,upSide,downSide;
-let width=screen.availWidth;
-let height=screen.availHeight-30;
+let width=1400;
+let height=650  ;
 let foodItem1 = document.getElementById('food');
 console.log("available height = "+screen.availHeight);
 console.log("available width = "+screen.availWidth);
@@ -90,32 +90,30 @@ function moveDown(){
     // console.log("top = "+top1);
 }
 function foodItem(){
-    do {
-        rhNumber = parseInt(Math.random() * height);
-        rwNumber = parseInt(Math.random() * width);
-    } while (
-        rhNumber >= buttonsArea.top &&
-        rhNumber <= buttonsArea.bottom &&
-        rwNumber >= buttonsArea.left &&
-        rwNumber <= buttonsArea.right
-    );
-    foodItem1.style.marginTop = rhNumber + "px";
-    foodItem1.style.marginLeft = rwNumber + "px";
+    const gameWidth = 1400;
+    const gameHeight = 650;
+    const foodSize = 20; 
+    const randomFoodX = Math.floor(Math.random() * (gameWidth - foodSize));
+    const randomFoodY = Math.floor(Math.random() * (gameHeight - foodSize));
+    
+    console.log("Random food position called");
+    console.log("X:", randomFoodX, "Y:", randomFoodY);
+    
+    foodItem1.style.left = randomFoodX + "px";
+    foodItem1.style.top = randomFoodY + "px";
 }
 function randomBomb(){
-    do {
-        rhNumber = parseInt(Math.random() * height)-50;
-        console.log("rhNumber = "+rhNumber);
-        rwNumber = parseInt(Math.random() * width)-60;
-        console.log("rwNumber = "+rwNumber);
-    } while (
-        rhNumber >= buttonsArea.top &&
-        rhNumber <= buttonsArea.bottom &&
-        rwNumber >= buttonsArea.left &&
-        rwNumber <= buttonsArea.right
-    );
-    bomb.style.marginTop=rhNumber+"px";
-    bomb.style.marginLeft=rwNumber+"px";
+    const gameWidth = 1400;
+    const gameHeight = 650;
+    const bombSize = 60;
+    const randomBombX = Math.floor(Math.random() * (gameWidth - bombSize));
+    const randomBombY = Math.floor(Math.random() * (gameHeight - bombSize));
+    
+
+
+    
+    bomb.style.left = randomBombX + "px";
+    bomb.style.top = randomBombY + "px";
 }
 function collisionCheck(){
     let snakeRect=snake.getBoundingClientRect();
