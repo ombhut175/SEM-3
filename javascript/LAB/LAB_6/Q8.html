@@ -1,0 +1,51 @@
+<!-- Write a JavaScript that handles following mouse events. Add necessary elements. (B)
+If the mouse is over the heading should turn yellow and if the mouse goes out of the
+heading it should turn black.
+If ƒndtime button is clicked show time and date information.
+If button named “red” is clicked, background should change to red and If button named
+“green” is clicked, background should
+change to green -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2 id="heading" onmouseover="yellowHeading()" onmouseleave="blackHeading()">Heading</h2>
+    <input type="button" value="find time" id="timeBtn" onclick="time()">
+    <span id="timeDisplay"></span>
+    <br>
+    <input type="button" id="redBtn" value="red" onclick="redBgm()">
+    <input type="button" id="greenBtn" value="green" onclick="greenBgm()">
+         <!-- <input type="button" name="" id="" id="btn"> -->
+         <script>
+            heading = document.getElementById('heading');
+
+            yellowHeading = ()=>{
+                heading.style.color="yellow";
+            }
+            blackHeading = ()=>{
+                heading.style.color="black";
+            }
+            timeBtn = document.getElementById('timeBtn');
+            timeDisplay = document.getElementById('timeDisplay');
+            time=()=>{
+                timeOfNow = new Date();
+                // timeDisplay.style.color="blue";
+                timeDisplay.innerHTML = timeOfNow;
+            }
+            redBtn = document.getElementById('redBtn');
+            greenBtn = document.getElementById('greenBtn');
+            redBgm = ()=>{
+                document.body.style.backgroundColor="red";
+            }
+            greenBgm = ()=>{
+                document.body.style.backgroundColor="green";
+                
+            }
+         </script>
+</body>
+</html>
