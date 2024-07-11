@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        students=[
+        {
+    "createdAt": "createdAt 1",
+    "name": "Mrs. Anthony Conn Sr.",
+    "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1033.jpg",
+    "id": "1",
+    "arr":[1,2,3,4],
+    "marks": [60,71,20,40,30,27]
+  },
+  {
+    "createdAt": "createdAt 2",
+    "name": "Curtis Paucek",
+    "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/191.jpg",
+    "id": "2"
+  },
+  {
+    "createdAt": "createdAt 3",
+    "name": "Jonathon Gislason",
+    "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1241.jpg",
+    "id": "3"
+  },
+  {
+    "createdAt": "createdAt 4",
+    "name": "Elmer Pfannerstill",
+    "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/964.jpg",
+    "id": "4"
+  },
+        ];
+        // let [one]=students[0].arr;
+        // console.log(one);
+        // for(data of students){
+        //     console.log(data.name);
+        // }
+        // for(i in students){
+        //     console.log(students[i].name);
+        // }
+        // students.forEach((a)=>{
+        //     console.log(a.createdAt);
+        // });
+        let{marks}=students[0];
+
+        // console.log(marks);
+        // result=marks.join('-');
+        // console.log(result);
+        // result=marks.filter(a => a>50
+        // );
+        // console.log(result);
+        // a="hello world";
+        // console.log(a.indexOf('a'));
+        result=students.filter(fac=>fac.name.toLowerCase().indexOf('e')>-1);
+        console.log(result);
+        </script>
+</body>
+</html>

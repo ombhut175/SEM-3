@@ -1,0 +1,22 @@
+<!-- . Write a JavaScript having a list of checkbox and by clicking on checkbox, it should show
+list of selected value in comma separated format. (e.g. list of roll number as checkbox
+value, and display selected roll number in comma separated format) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="checkbox" >
+    <span id="result"></span>
+    <script>
+        result = document.getElementById('result');
+        arr=['hi','hello','bye','tata'];
+        for(i in arr){
+            result.innerHTML  += "<input type='checkbox'>"+arr[i]+"<br/>";
+        }
+    </script>
+</body>
+</html>

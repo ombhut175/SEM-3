@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulating Right-Click</title>
+<style>
+    .context-menu {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        border: 1px solid #ccc;
+        padding: 5px 10px;
+        z-index: 1000;
+    }
+</style>
+</head>
+<body>
+
+<div class="context-menu" id="contextMenu">
+    <ul>
+        <li><a href="#">Option 1</a></li>
+        <li><a href="#">Option 2</a></li>
+        <li><a href="#">Option 3</a></li>
+    </ul>
+</div>
+
+<script>
+document.addEventListener('contextmenu', function(event) {
+    event.preventDefault(); // Prevent the default right-click context menu
+    var contextMenu = document.getElementById('contextMenu');
+    contextMenu.style.display = 'block';
+    contextMenu.style.left = event.pageX + 'px';
+    contextMenu.style.top = event.pageY + 'px';
+});
+
+document.addEventListener('click', function(event) {
+    var contextMenu = document.getElementById('contextMenu');
+    if (!contextMenu.contains(event.target)) {
+        contextMenu.style.display = 'none';
+    }
+});
+</script>
+
+</body>
+</html>
