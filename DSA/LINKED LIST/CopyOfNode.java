@@ -15,13 +15,15 @@ public class CopyOfNode {
         for (int i = 1; i <= 10; i++) {
             l1.addLast(i);
         }
+        l1.display();
         l2.copyNewNode(l1);
-        l2.addLast(11); // checking
-        l2.reverse();
+        // l2.addLast(11); // checking
+        // l2.reverse();
         l2.display();
         // CopyLinkedList.display();
         // l1.reverseNode(l2);
         // l2.display();
+        l2.checkCopy(l1);
     }       
 }
 class CopyLinkedList{
@@ -59,6 +61,7 @@ class CopyLinkedList{
             System.out.print(temp.data + " ");
             temp=temp.next;
         }
+        System.out.println();
     }
     public void reverseNode(CopyLinkedList l2){
         if(this.head==null){
@@ -99,6 +102,39 @@ class CopyLinkedList{
             current=next;
         }
         head=prev;
+    }
+    void checkCopy(CopyLinkedList l1){
+        Node save1 = this.head;
+        Node save2 = l1.head;
+        int count1=0,count2=0;
+        while(save1!=null){
+            count1++;
+            save1=save1.next;
+        }
+        while (save2!=null) {
+            count2++;
+            save2=save2.next;
+        }
+        if(count1!=count2){
+            System.out.println("both ll are not same");
+            return;
+        }
+        save1=this.head;
+        save2=l1.head;
+        int count=0;
+        while (save1!=null) {
+            if(save1.data==save2.data){
+                count++;
+            }
+            save1=save1.next;
+            save2=save2.next;
+        }
+        if(count==count1){
+            System.out.println("both ll are same");
+        }
+        else{
+            System.out.println("both ll are not same");
+        }
     }
 }
 class Node {

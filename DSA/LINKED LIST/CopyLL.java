@@ -24,6 +24,8 @@ public class CopyLL {
         l2.copy(l1);
         l2.addLast(200); //checking
         l2.display();
+
+    
         sc.close();
     }
 }
@@ -67,6 +69,10 @@ class CopyLinkList{
                 save=save.link;
             }
             System.out.println();
+        }
+        void checkCopy(CopyLinkList l1){
+            Node save1 = this.first;
+
         }
 }
 class Node {

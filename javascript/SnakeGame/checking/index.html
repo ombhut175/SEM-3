@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Snake Game</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        touch-action: none;
+        overflow: hidden;
+        background-color: black;
+      }
+      #game-area {
+        position: relative;
+        width: 100%;
+        height: calc(100vh - 100px);
+        overflow: hidden;
+      }
+      #buttons {
+        position: fixed;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        max-width: 300px;
+      }
+      #buttons button {
+        margin: 5px;
+        width: 60px;
+        height: 60px;
+      }
+      #snake,
+      #food,
+      #bomb {
+        position: absolute;
+      }
+      #food img,
+      #bomb img {
+        width: 30px;
+        height: 30px;
+      }
+      #snake img {
+        width: 50px;
+        height: 40px;
+      }
+      #score{
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="game-area">
+      <div id="snake">
+        <img
+          src="kisspng-snake-cartoon-clip-art-snake-cartoon-5adfd35ccfb7c5.4625450915246180768508-removebg-preview.png"
+          alt=""
+        />
+      </div>
+      <div id="food"><img src="food.png" alt="" /></div>
+      <div id="bomb"><img src="bomb-png-46590.png" alt="" /></div>
+    </div>
+    <div id="buttons">
+      <button class="btn btn-secondary" id="upBtn">&#8593;</button>
+      <button class="btn btn-secondary" id="leftBtn">&#8592;</button>
+      <button class="btn btn-secondary" id="rightBtn">&#8594;</button>
+      <button class="btn btn-secondary" id="downBtn">&#8595;</button>
+      <button class="btn btn-danger" id="stopBtn">&#9632;</button>
+      <span id="score">Score: 0</span>
+    </div>
+
+    <script>
+      let snake = document.getElementById("snake");
+      let food = document.getElementById("food");
+      let bomb = document.getElementById("bomb");
+      let score = document.getElementById("score");
+      let gameArea = document.getElementById("game-area");
+
+      let left = 0;
+      let top1 = 0;
+      let width = window.innerWidth;
+      let height = window.innerHeight - 100; // Subtract 100px for controls
+      let countScore = 0;
+      let speed = 10;
+      let bombSpeed = 1400;
+      let direction = null;
+
+      gameArea.style.width = width + "px";
+      gameArea.style.height = height + "px";
+
+      function setDirection(newDirection) {
+        direction = newDirection;
+      }
+
+      function moveSnake() {
+        switch (direction) {
+          case "left":
+            if (left <= 0) left = width - 30;
+            left -= 1;
+            snake.style.transform = "rotateY(0deg)";
+            break;
+          case "right":
+            if (left >= width - 30) left = 0;
+            left += 1;
+            snake.style.transform = "rotateY(180deg)";
+            break;
+          case "up":
+            if (top1 <= 0) top1 = height - 30;
+            top1 -= 1;
+            snake.style.transform = "rotate(90deg)";
+            break;
+          case "down":
+            if (top1 >= height - 30) top1 = 0;
+            top1 += 1;
+            snake.style.transform = "rotate(270deg)";
+            break;
+        }
+        snake.style.left = left + "px";
+        snake.style.top = top1 + "px";
+        collisionCheck();
+      }
+
+      function randomPosition(element) {
+        const elementSize = 30;
+        const randomX = Math.floor(Math.random() * (width - elementSize));
+        const randomY = Math.floor(Math.random() * (height - elementSize));
+        element.style.left = randomX + "px";
+        element.style.top = randomY + "px";
+      }
+
+      function collisionCheck() {
+        let snakeRect = snake.getBoundingClientRect();
+        let foodRect = food.getBoundingClientRect();
+        let bombRect = bomb.getBoundingClientRect();
+
+        if (
+          snakeRect.left < foodRect.right &&
+          snakeRect.right > foodRect.left &&
+          snakeRect.top < foodRect.bottom &&
+          snakeRect.bottom > foodRect.top
+        ) {
+          countScore++;
+          score.innerHTML = `Score: ${countScore}`;
+          randomPosition(food);
+          adjustDifficulty();
+        }
+
+        if (
+          snakeRect.left < bombRect.right &&
+          snakeRect.right > bombRect.left &&
+          snakeRect.top < bombRect.bottom &&
+          snakeRect.bottom > bombRect.top
+        ) {
+          countScore--;
+          if (countScore < 0) {
+            alert("Game Over! Restart the game.");
+            countScore = 0;
+          }
+          score.innerHTML = `Score: ${countScore}`;
+          randomPosition(bomb);
+        }
+      }
+
+      function adjustDifficulty() {
+        if (countScore > 10) speed = 8;
+        if (countScore > 20) speed = 6;
+        if (countScore > 30) speed = 4;
+        if (countScore > 40) speed = 2;
+        if (countScore > 50) speed = 1;
+      }
+
+      function stop() {
+        direction = null;
+        countScore = 0;
+        score.innerHTML = "Score: 0";
+        alert("Game stopped. Press a direction to restart.");
+      }
+
+      // Event Listeners
+      document
+        .getElementById("upBtn")
+        .addEventListener("click", () => setDirection("up"));
+      document
+        .getElementById("downBtn")
+        .addEventListener("click", () => setDirection("down"));
+      document
+        .getElementById("leftBtn")
+        .addEventListener("click", () => setDirection("left"));
+      document
+        .getElementById("rightBtn")
+        .addEventListener("click", () => setDirection("right"));
+      document.getElementById("stopBtn").addEventListener("click", stop);
+
+      // Keyboard controls
+      document.addEventListener("keydown", (e) => {
+        switch (e.key) {
+          case "ArrowUp":
+            setDirection("up");
+            break;
+          case "ArrowDown":
+            setDirection("down");
+            break;
+          case "ArrowLeft":
+            setDirection("left");
+            break;
+          case "ArrowRight":
+            setDirection("right");
+            break;
+        }
+      });
+
+      // Touch controls
+      let touchStartX, touchStartY;
+      gameArea.addEventListener("touchstart", (e) => {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+      });
+
+      gameArea.addEventListener("touchmove", (e) => {
+        if (!touchStartX || !touchStartY) return;
+
+        let touchEndX = e.touches[0].clientX;
+        let touchEndY = e.touches[0].clientY;
+
+        let dx = touchEndX - touchStartX;
+        let dy = touchEndY - touchStartY;
+
+        if (Math.abs(dx) > Math.abs(dy)) {
+          setDirection(dx > 0 ? "right" : "left");
+        } else {
+          setDirection(dy > 0 ? "down" : "up");
+        }
+
+        touchStartX = touchEndX;
+        touchStartY = touchEndY;
+      });
+
+      // Initialize game
+      randomPosition(food);
+      randomPosition(bomb);
+      setInterval(moveSnake, speed);
+      setInterval(() => randomPosition(bomb), bombSpeed);
+    </script>
+  </body>
+</html>

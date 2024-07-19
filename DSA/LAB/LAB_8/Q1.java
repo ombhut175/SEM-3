@@ -34,10 +34,7 @@ public class Q1 {
         }
     }
     public static int ipf(char s){
-        if(s>=65 && s<=90){
-            return 7;
-        }
-        else if(s>=97 && s<=122){
+        if(s>=65 && s<=90 || s>=97 && s<=122){
             return 7;
         }
         else if(s=='+'||s=='-'){
