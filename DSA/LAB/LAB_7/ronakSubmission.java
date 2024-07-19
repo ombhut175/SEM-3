@@ -66,7 +66,6 @@ class Codechef
             int i=0;
             int j=n-1;
             int add = -1;
-            
             while(cur>=0){
                 arr[ind] = s.charAt(cur);
                 ind+=add;
