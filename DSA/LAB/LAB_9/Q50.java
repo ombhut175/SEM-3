@@ -4,7 +4,7 @@ public class Q50 {
         Scanner sc = new Scanner(System.in);
         System.out.println("enter size of queue");
         int n = sc.nextInt();
-        StackImplementation s1 = new StackImplementation(n);
+        QueueImplementation s1 = new QueueImplementation(n);
         outer:
         while (true) {
             System.out.println("1 for queue 2 for deque");
@@ -24,12 +24,12 @@ public class Q50 {
         }
     }
 }
-class StackImplementation{
+class QueueImplementation{
     int r=-1;
     int f=-1;
     int[] a ;
     int n;
-    public StackImplementation(int n){
+    public QueueImplementation(int n){
         this.n=n;
         this.a=new int[n];
     }
