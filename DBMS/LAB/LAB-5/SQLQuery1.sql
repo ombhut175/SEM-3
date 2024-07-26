@@ -63,7 +63,9 @@ SELECT * FROM STUDENT;
 	SELECT * FROM STUDENT WHERE LASTNAME NOT LIKE '%A';
 --4. Display all the students whose first name starts with consonant.
 	SELECT * FROM STUDENT WHERE FIRSTNAME NOT LIKE '[AEIOU]%';
---5. Display all the students whose website contains .net	SELECT * FROM STUDENT WHERE WEBSITE LIKE '%.NET%';
+--5. Display all the students whose website contains .net
+	SELECT * FROM STUDENT WHERE WEBSITE LIKE '%.NET%';
+
 	--Part – C:
 	--1. Display all the students whose address consist of -.
 		SELECT * FROM STUDENT WHERE ADDRESS LIKE '%-%';
@@ -71,4 +73,8 @@ SELECT * FROM STUDENT;
 		SELECT * FROM STUDENT WHERE ADDRESS LIKE '%''%' OR ADDRESS LIKE '%"%' ;
 	--3. Display all the students whose website contains @.
 		SELECT * FROM STUDENT WHERE WEBSITE LIKE '%@%';
-	--4. Display all the names those are either four or five characters.		SELECT * FROM STUDENT WHERE FIRSTNAME LIKE '____' OR FIRSTNAME LIKE '_____';		--------EXTRA-----------		--SELECT * FROM STUDENT WHERE FIRSTNAME LIKE 
+	--4. Display all the names those are either four or five characters.
+		SELECT * FROM STUDENT WHERE FIRSTNAME LIKE '____' OR FIRSTNAME LIKE '_____';
+
+		--------EXTRA-----------
+		--SELECT * FROM STUDENT WHERE FIRSTNAME LIKE 

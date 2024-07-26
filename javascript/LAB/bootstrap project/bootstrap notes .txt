@@ -1,0 +1,40 @@
+bootstrap notes 
+
+padding : top left bottom right;
+
+
+in css :-
+
+font weight -> 50 gap
+
+box shadow -> color horizontal(left or right) vertical (up or down) blur spread radius;
+
+padding: <top> <right> <bottom> <left>;
+
+overflow : x y;
+
+
+
+I removed the justify-content-center align-items-stretch classes from the row to prevent unnecessary centering and stretching.
+I added the d-flex flex-column h-100 classes to each card column to ensure they stretch vertically to fill the available space.
+I added the flex-grow-1 class to each card to allow it to grow and fill the available space within its column
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+websites :- shape divider
+
+

@@ -100,4 +100,5 @@ SELECT * FROM DEPOSIT_DETAIL;
 			DELETE FROM EMPLOYEE_MASTER WHERE City IS NOT NULL;
 		--7. Delete all the records of Employee_MASTER table. (Use Truncate)
 			TRUNCATE TABLE EMPLOYEE_MASTER;
-		--8. Remove Employee_MASTER table. (Use Drop)			DROP TABLE EMPLOYEE_MASTER;
+		--8. Remove Employee_MASTER table. (Use Drop)
+			DROP TABLE EMPLOYEE_MASTER;
