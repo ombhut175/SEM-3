@@ -55,7 +55,7 @@ INSERT INTO EMP(EID,ENAME,DEPARTMENT,SALARY,JOININGDATE,CITY) VALUES (107,'Bhoom
 --name.
 	SELECT AVG(SALARY) FROM EMP GROUP BY DEPARTMENT;
 
---	Part – B:
+--	Part ï¿½ B:
 --1. Count the number of employees living in Rajkot.
 	SELECT COUNT(EID) FROM EMP WHERE CITY='RAJKOT';
 --2. Display the difference between the highest and lowest salaries. Label the column DIFFERENCE.
@@ -64,14 +64,14 @@ INSERT INTO EMP(EID,ENAME,DEPARTMENT,SALARY,JOININGDATE,CITY) VALUES (107,'Bhoom
 	SELECT COUNT(EID) AS TOTAL_EMPLOYESS FROM EMP WHERE JOININGDATE<'1-JANUARY-1991';
 
 
---	Part – C:
+--	Part ï¿½ C:
 --1. Count the number of employees living in Rajkot or Baroda.
 	SELECT COUNT(EID) AS COUNT FROM EMP WHERE CITY='RAJKOT' OR CITY='BARODA';
 --2. Display the total number of employees hired before 1st January, 1991 in IT department.
 	SELECT COUNT(EID) AS COUNT FROM EMP WHERE JOININGDATE<'1-JAN-1991' AND DEPARTMENT='IT';
 --3. Find the Joining Date wise Total Salaries.
 	SELECT JOININGDATE,SUM(SALARY) AS SUM FROM EMP GROUP BY JOININGDATE;
---4. Find the Maximum salary department & city wise in which city name starts with ‘R’.
+--4. Find the Maximum salary department & city wise in which city name starts with ï¿½Rï¿½.
 	SELECT DEPARTMENT, CITY ,MAX(SALARY) AS MAX FROM EMP WHERE CITY LIKE 'R%' GROUP BY DEPARTMENT,CITY;
 
 	SELECT * FROM EMP;

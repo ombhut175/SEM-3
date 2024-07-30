@@ -25,37 +25,43 @@ public class Q43 {
             }
         }
         for(int i=0;i<m;i++){
+            for(int j=i+1;j<m;j++){
+                if(a[i][0]>a[j][0]){
+                    for(int k=0;k<2;k++){
+                        int temp = a[i][k];
+                        a[i][k]=a[j][k];
+                        a[j][k]=temp;
+                    }
+                }
+            }
+        }
+        for(int i=0;i<m;i++){
             for(int j=0;j<n;j++){
                 System.out.print(" "+"a["+i+"]"+"["+j+"] = "+a[i][j]);
             }
             System.out.println();
         }
-        
-        Pair a1 = new Pair(a[0][0],a[0][1]);
+        int constJ = 0;
+        Pair a1 = new Pair(a[0][constJ],a[0][constJ+1]);
         Stack <Pair> s = new Stack<>();
         s.push(a1);
-        int constJ = 0;
         for(int i=1;i<m;i++){
-            
-            if(a[i][constJ]>=a[i-1][constJ] && a[i][constJ]<=a[i-1][constJ+1] || a[i][constJ+1]>=a[i-1][constJ] && a[i][constJ+1]<=a[i-1][constJ+1]){
+            int p1=s.peek().a;
+            int p2=s.peek().b;
+            if(a[i][constJ]>=p1 && a[i][constJ]<=p2 || a[i][constJ+1]>=p1 && a[i][constJ+1]<=p2){
                 s.pop();
-                if(a[i][constJ]>=a[i-1][constJ] && a[i][constJ+1]>=a[i-1][constJ+1]){
-                    s.push(new Pair(a[i-1][constJ],a[i][constJ+1]));  
+                if(a[i][constJ]>=p1 && a[i][constJ+1]>=p2){
+                    s.push(new Pair(p1,a[i][constJ+1]));  
                 }
                 else{
-                    s.push(new Pair(a[i-1][constJ], a[i-1][constJ+1]));
+                    s.push(new Pair(p1, p2));
                 }
             }
             else{
                 s.push(new Pair(a[i][constJ], a[i][constJ+1]));
             }
         }
-        // String s1 = "";
-        // while(!s.isEmpty()){
-        //     Pair p = s.pop();
-        //     System.out.println(p.a+" "+p.b);
-        // }
-        // System.out.println(s1);
+        
         Stack<Pair> reversedStack = new Stack<>();
         while(!s.isEmpty()) {
             reversedStack.push(s.pop());
