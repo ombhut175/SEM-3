@@ -105,5 +105,5 @@ getEqualTo=()=>{
 };
 
 getDecimal=(op)=>{
-
+    
 };

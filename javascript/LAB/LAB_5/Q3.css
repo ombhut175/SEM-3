@@ -1,0 +1,13 @@
+.main{
+    width: 500px;
+    /* height: 100%; */
+}
+.main-1{
+    display: grid;
+    place-content: center;
+    /* height: 900px; */
+}
+/* .buttons{
+    display: grid;
+     place-content: center; 
+} */

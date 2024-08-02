@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+        <input type="text" id="inputRegx">
+        <div id="result"> </div>
+        <input type="button" value="click me" onclick="checkRegex()">
+        <script>
+            input = document.getElementById('inputRegx');
+            result=document.getElementById('result');
+            checkRegex = ()=>{
+            pattern = /(?<=my phone number is\s)(\+91[ -])?(\d{3})[ -]?(\d{3})[ -]?(\d{4})/;
+            regex = new RegExp(pattern);
+            if(regex.test(input.value)){
+                result.innerHTML='valid';
+            }else {
+                result.innerHTML='invalid';
+            }
+
+            }
+        </script>
+
+</body>
+</html>
