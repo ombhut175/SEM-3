@@ -21,8 +21,8 @@ public class Q75 {
         m1.display();
         m1.addLast("5");
         m1.display();
-        m1.swapMusic(2, 4);
-        m1.display();
+        m1.swapMusic(1, 4);
+        // m1.display();
         // m1.playThis("4");
         // outer:
         // while (true) {
@@ -305,11 +305,13 @@ class MusicPlayer{
         }
         save=l;
         count=-1;
+        Node pred=save;
         while(save!=null){
             count++;
             if(count==i1){
                 break;
             }
+            pred=save;
             save=save.rpter;
         }
         boolean check2=false;
@@ -359,18 +361,27 @@ class MusicPlayer{
                         System.out.println("save2.info = "+save2.info);
                         System.out.println("save = "+save.info);
                         System.out.println("pred2.info = "+pred2.info);
+                        System.out.println("pred.info = "+pred.info);
                         if(!check3){
                             save2.rpter=save;
                         }else{
-                            save2.rpter=save.rpter;
+                            save.lpter.rpter = save2;
+                            save2.rpter = save.rpter;
+                            pred2.rpter = save;
+                            pred2.lpter=save2;
+                            save2.lpter=pred;
+                            save.lpter=pred;
                         }
                     }
                     // System.out.println("at line 350");
                 }
             //     if(!check1 && !check3){
             // }
-            save2.lpter=save.lpter;
+            // if(!check3){
+            // }
+            
             if(!check3){
+                save2.lpter=save.lpter;
                 suc2.lpter=save;
             }
             else{
