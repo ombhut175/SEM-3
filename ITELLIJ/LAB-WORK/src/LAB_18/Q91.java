@@ -8,7 +8,6 @@ public class Q91 {
         int a[] = {1,3,7,9,13,15,19};
         System.out.println("enter number to find");
         int s = sc.nextInt();
-//        int length = a.length;
         int index=-1;
         int left=0;
         int right=a.length-1;

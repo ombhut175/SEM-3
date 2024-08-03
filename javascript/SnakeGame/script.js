@@ -1,6 +1,12 @@
 //this is a javascript code of a simple snake game
 
 let snake = document.getElementById('snake');
+let snakeImg=document.getElementById('snake-img');
+// let rect = snakeImg.getBoundingClientRect();
+// let snakeWidth = rect.width;
+// let snakeHeight = rect.height; //use if required
+console.log("snakeWidth "+snakeWidth);
+console.log("snakeHeight "+snakeHeight);
 let left=0;
 let top1=0;
 let leftSide,rightSide,upSide,downSide;
@@ -9,12 +15,9 @@ let height=screen.availHeight;
 if(height>800 &&height<900){ //adjusting height for smaller devices
     height=600;
 } 
-// console.log(height); 
 document.body.style.width=(width-50)+"px"; //adjusting body width
 document.body.style.height=(height-100)+"px"; //adjusting body height
 let foodItem1 = document.getElementById('food'); //food item
-// console.log("available height = "+screen.availHeight);
-// console.log("available width = "+screen.availWidth);
 let countScore=0;
 let bomb = document.getElementById('bomb'); // bomb
 let score = document.getElementById('score'); //score
@@ -24,8 +27,7 @@ let buttonsArea=document.getElementById('buttons').getBoundingClientRect(); //bu
 let speed=10; //initial speed
 let speedChange=countScore; //changing speed 
 let bombSpeed=1400;
-// setFoodItem();
-setBombItem(); 
+setBombItem();
 randomBomb(); 
 foodItem();
 function setLeft(){
@@ -117,7 +119,7 @@ function foodItem(){
     if(screen.availHeight<1000){
         gameHeight=screen.availHeight-170;
     }
-    const foodSize = 20; 
+    const foodSize = 20;
     const randomFoodX = Math.floor(Math.random() * (gameWidth - foodSize));
     const randomFoodY = Math.floor(Math.random() * (gameHeight - foodSize));
     
@@ -169,26 +171,38 @@ function collisionCheck(){
         if(speedChange>10){
             speed=8;
             bombSpeed=1200;
+            snakeImg.style.height='60px';
+            snakeImg.style.width='85px';
         }
         else if(speedChange>20){
             speed=6;
             bombSpeed=1000;
+            snakeImg.style.height='65px';
+            snakeImg.style.width='90px';
         }
         else if(speedChange>30){
             speed=4;
             bombSpeed=800;
+            snakeImg.style.height='70px';
+            snakeImg.style.width='95px';
         }
         else if(speedChange>40){
             speed=2;
             bombSpeed=600;
+            snakeImg.style.height='80px';
+            snakeImg.style.width='105px';
         }
         else if(speedChange>50){
             speed=1;
             bombSpeed=500;
+            snakeImg.style.height='90px';
+            snakeImg.style.width='115px';
         }
         else if(speedChange>60){
             speed=0.5;
             bombSpeed=400;
+            snakeImg.style.height='95px';
+            snakeImg.style.width='125px';
         }
         score.innerHTML = `Score: ${countScore}`;
         foodItem(); // Relocate the food item
