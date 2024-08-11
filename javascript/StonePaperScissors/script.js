@@ -10,7 +10,6 @@ let compN=Math.floor(Math.random()*3);
 let userN;
 let checkPlay;
 let count = 0;
-// console.log(n);
 gameScore = (n)=> {
     if (checkPlay) {
         userN = n;
@@ -75,7 +74,6 @@ resetTheGame=(result)=>{
     Swal.fire({
         title: result,
         showDenyButton: true,
-        showCancelButton: true,
         confirmButtonText: "Start New Game",
         denyButtonText: "Cancel"
     }).then((result) => {
@@ -108,10 +106,8 @@ startTheGame=()=>{
     else{
         play.innerText='Start';
     }
-    console.log("value of checkPlay "+checkPlay)
 }
 play.addEventListener('click',()=>{startEvent()});
-
 paper.addEventListener('click',()=>gameScore(0));
 rock.addEventListener('click',()=>gameScore(1));
 scissors.addEventListener('click',()=>gameScore(2));
