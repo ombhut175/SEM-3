@@ -24,7 +24,18 @@ mongoose.connect(connectionString).then(()=>{
         })
         await faculty.save();
         res.send(await Faculty.find());
-    }); 
+    });
+    app.delete('/faculties/:index',async  (req,res)=>{
+        try{
+        faculty = await Faculty.findOne({FacultyId:req.params.index});
+        await faculty.delete();
+        res.send(await Faculty.find());
+        }catch (error){
+            res.status(404);
+            res.send({error: "Faculty doesnt exist"})
+        }
+
+    });
     app.listen(3000,()=>{
         console.log('server is listening at 3000');
     })

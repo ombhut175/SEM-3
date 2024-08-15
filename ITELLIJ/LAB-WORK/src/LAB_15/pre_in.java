@@ -27,10 +27,6 @@ class LinkedList{
         int[] left = new int[i-1];
         int[] right = new int[n1-i];
         for(int tempi=0;tempi<left.length;i++) left[tempi] = in[tempi];
-        for(int tempj=0;)
-        for(int tempi=0;i<left.length;i++){
-
-        }
     }
 }
 

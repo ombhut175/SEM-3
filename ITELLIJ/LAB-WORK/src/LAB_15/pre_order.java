@@ -1,4 +1,4 @@
-package LAB_15;
+ package LAB_15;
 
 public class pre_order {
     public static void main(String[] args) {
@@ -14,7 +14,7 @@ public class pre_order {
     }
 }
 
-class BinaryTree{
+class BinaryTree {
     int idx=-1;
     Node insertPreOrder(int[]a){
         idx++;
@@ -78,5 +78,16 @@ class BinaryTree{
         prettyDisplay(node.left,level+1);
     }
 }
+
+//class Node{
+//    int key;
+//    Node left;
+//    Node right;
+//    Node(int key){
+//        this.key=key;
+//        this.left=null;
+//        this.right=null;
+//    }
+//}
 
 
