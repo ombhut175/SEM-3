@@ -2,50 +2,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stone Papper Scissors</title>
+    <title>Stone Paper Scissors</title>
     <link rel="stylesheet" href="./src/output.css">
     <style>
-        /* .transition-transform1 {
-            transition: transform 0.3s;
-        } */
-    </style>
+      body {
+          overflow: hidden;
+      }
+  </style>
 </head>
 <body>
   <div class="main flex h-screen flex-col bg-green-200 transition-transform">
-    <!-- <div class="score">
-      <p class="me-10 flex justify-end text-4xl font-bold text-black">Score</p>
-    </div> -->
     <div class="heading bg-blue-950 h-32 flex items-center justify-center">
       <p class="text-white w-fit text-3xl font-bold">Rock Paper Scissors</p>
-  </div>
-  
+    </div>
     <div class="game my-auto flex flex-col justify-center items-center">
-      <div class="grid md:grid-cols-3 grid-cols-2 lg:gap-60 md:gap-40 sm:gap-32">
+      <div class="image-container grid md:grid-cols-3 grid-cols-2 lg:gap-60 md:gap-40 sm:gap-32 gap-16 sm:mt-20 mt-10">
         <img src="./images/paper.png" alt="" class="rounded-full h-44 w-52 cursor-pointer transition-transform hover:scale-105" id="paper">
         <img src="./images/rock.png" alt="" class="rounded-full w-52 h-44 cursor-pointer transition-transform hover:scale-105" id="rock">
-        
-        <!-- Use col-span to center the image on small screens -->
         <img src="./images/scissors.png" alt="" class="rounded-full w-52 h-44 col-span-2 md:col-span-1 mx-auto cursor-pointer transition-transform hover:scale-105" id="scissor">
-
       </div>
-      <div class="above-controls flex justify-between w-96 mt-28">
-
+      <div class="above-controls flex justify-between w-96 sm:mt-28 mt-10">
         <div class="controls flex flex-row items-center space-x-4">
-          <div class="text-center">
+          <div class="text-center ">
             <p class="text-4xl font-bold" id="youScoreHtml">0</p>
             <p class="text-xl">You</p>
           </div>
         </div>
-
-        <div class="controls flex flex-row items-center space-x-4">
+        <div class="controls flex flex-row items-center space-x-4 h-10">
           <div class="text-center">
             <p class="text-4xl font-bold" id="compScoreHtml">0</p>
             <p class="text-xl">Computer</p>
           </div>
         </div>
-
       </div>
-      <div class="button mt-20">
+      <div class="button sm:mt-20">
         <button class="bg-gray-800 text-white py-2 px-4 rounded-3xl hover:bg-gray-700 h-24 w-36" id="play">Play</button>
       </div>
     </div>
