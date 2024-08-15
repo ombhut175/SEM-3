@@ -6,6 +6,11 @@ public class Q1 {
         BinaryTree bt1 = new BinaryTree();
         int[] a = {1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
         Node root = bt1.insertPreOrder(a);
+        int[] b = {2,4,-1,-1,5,-1,-1};
+//        BinaryTree bt2 = new BinaryTree();
+            bt1.setIndex();
+            Node root2 = bt1.insertPreOrder(b);
+            bt1.prettyDisplay(root2);
 //        bt1.prettyDisplay(root);
 //        bt1.displayPre(root);
 //        System.out.println();
@@ -13,12 +18,19 @@ public class Q1 {
 //        System.out.println();
 //        bt1.displayPost(root);
 //        bt1.levelTraversal(root);
-        int height = bt1.height(root);
-        System.out.println(height);
-        int count = bt1.countNodes(root);
-        System.out.println(count);
-        int sum = bt1.sum(root);
-        System.out.println(sum);
+//        int height = bt1.height(root);
+//        System.out.println(height);
+//        int count = bt1.countNodes(root);
+//        System.out.println(count);
+//        int sum = bt1.sum(root);
+//        System.out.println(sum);
+//        int diameter = bt1.diameter(root);
+//        System.out.println(diameter);
+//        BinaryTree.Info info = bt1.diameter2(root);
+//        System.out.println(info.height);
+//        System.out.println(info.diameter);
+
+            System.out.println(bt1.checkSubTree(root,root2));
     }
 }
 
@@ -33,6 +45,9 @@ class BinaryTree {
         newNode.left = insertPreOrder(a);
         newNode.right = insertPreOrder(a);
         return newNode;
+    }
+    void setIndex(){
+        idx=-1;
     }
     void displayPre(Node node){
         if (node==null){
@@ -96,6 +111,50 @@ class BinaryTree {
         int a = sum(node.left);
         int b = sum(node.right);
         return node.key+a+b;
+    }
+    int diameter(Node node){//O(n^2)
+        if (node==null) return 0;
+        int lh = height(node.left);
+        int rh = height(node.right);
+        int ld = diameter(node.left);
+        int rd = diameter(node.right);
+        return Math.max(Math.max(ld,rd),lh+rh+1);
+    }
+    Info diameter2(Node node){//O(n) time complexity
+        if(node == null) return new Info(0,0);
+        Info lInfo = diameter2(node.left);
+        Info rInfo = diameter2(node.right);
+            int finalH = Math.max(lInfo.height,rInfo.height)+1;
+            int finalD = Math.max(Math.max(lInfo.diameter,rInfo.diameter),lInfo.height+rInfo.height+1);
+            return new Info(finalH,finalD);
+    }
+    class Info{
+        int height;
+        int diameter;
+        Info(int height,int diameter){
+            this.height=height;
+            this.diameter=diameter;
+        }
+    }
+//    private int diameter(Node node){
+//        if (node==null) return 0;
+//        int left = countNodes(node.left);
+//        int right = countNodes(node.right);
+//        return left+right+1;
+//    }
+    boolean checkSubTree(Node root1,Node root2){
+        if (root2==null) return true;
+        if (root1==null) return false;
+        if (checkSubTree1(root1,root2)) return true;
+        return checkSubTree(root1.left,root2) || checkSubTree(root1.right,root2);
+    }
+    private boolean checkSubTree1(Node root1,Node root2){
+        if(root1==null && root2==null) return true;
+        if (root1==null || root2==null) return false;
+        if(root1.key!=root2.key) return false;
+//        boolean leftTree = checkSubTree1(root1.left,root2.left);
+//        boolean rightTree = checkSubTree1(root1.right,root2.right);
+        return checkSubTree1(root1.left,root2.left) && checkSubTree1(root1.right,root2.right);
     }
     void display(Node root){
         display(root,"");
