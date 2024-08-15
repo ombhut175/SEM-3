@@ -1,3 +1,4 @@
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -10,7 +11,7 @@ public class Q1 {
 //        BinaryTree bt2 = new BinaryTree();
             bt1.setIndex();
             Node root2 = bt1.insertPreOrder(b);
-            bt1.prettyDisplay(root2);
+//            bt1.prettyDisplay(root2);
 //        bt1.prettyDisplay(root);
 //        bt1.displayPre(root);
 //        System.out.println();
@@ -29,14 +30,18 @@ public class Q1 {
 //        BinaryTree.Info info = bt1.diameter2(root);
 //        System.out.println(info.height);
 //        System.out.println(info.diameter);
-
-            System.out.println(bt1.checkSubTree(root,root2));
+//            System.out.println(bt1.checkSubTree(root,root2));
+            bt1.setIndex();
+            int[] c = {1,2,-1,4,-1,5,-1,6,-1,-1,3,-1,-1};
+            Node root3 = bt1.insertPreOrder(c);
+            bt1.prettyDisplay(root3);
+            bt1.displayTop(root3);
     }
 }
 
 class BinaryTree {
     int idx=-1;
-    Node insertPreOrder(int[]a){
+    Node insertPreOrder(int[] a){
         idx++;
         if(a[idx]==-1){
             return null;
@@ -155,6 +160,47 @@ class BinaryTree {
 //        boolean leftTree = checkSubTree1(root1.left,root2.left);
 //        boolean rightTree = checkSubTree1(root1.right,root2.right);
         return checkSubTree1(root1.left,root2.left) && checkSubTree1(root1.right,root2.right);
+    }
+    private class Info1{
+        Node node;
+        int hd;
+        Info1(Node node,int hd){
+            this.node = node;
+            this.hd = hd;
+        }
+    }
+    void displayTop(Node root){
+        if (root==null){
+            System.out.println("Tree is empty");
+            return;
+        }
+        Queue<Info1> qi1 = new LinkedList<>();
+        HashMap<Integer,Node> hm1 = new HashMap<>();
+        int min=0,max=0;
+        qi1.add(new Info1(root,0));
+        qi1.add(null);
+        while (!qi1.isEmpty()){
+            Info1 curr = qi1.remove();
+            if (curr==null){
+                if (!qi1.isEmpty()){
+                    qi1.add(null);
+                }
+            }
+            else {
+                if (!hm1.containsKey(curr.hd)) hm1.put(curr.hd, curr.node);
+                if (curr.node.left!=null){
+                    qi1.add(new Info1(curr.node.left, curr.hd-1));
+                    min = Math.min(curr.hd, curr.hd-1);
+                }
+                if (curr.node.right!=null){
+                    qi1.add(new Info1(curr.node.right, curr.hd+1));
+                    max = Math.max(curr.hd, curr.hd+1);
+                }
+            }
+        }
+        for (int i = min; i <= max; i++) {
+            System.out.print(hm1.get(i).key+" ");
+        }
     }
     void display(Node root){
         display(root,"");
