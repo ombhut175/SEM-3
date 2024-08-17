@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const Faculty = require('./Faculty');
 const bodyParse = require('body-parser')
-const connectionString = 'mongodb+srv://23010101033:Om110123@cluster0.tpipx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+const connectionString = 'mongodb+srv://<username><password>@cluster0.tpipx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 
 mongoose.connect(connectionString).then(()=>{
     const app = express();
