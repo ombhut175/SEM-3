@@ -1,6 +1,4 @@
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 public class Q1 {
     public static void main(String[] args) {
@@ -31,11 +29,20 @@ public class Q1 {
 //        System.out.println(info.height);
 //        System.out.println(info.diameter);
 //            System.out.println(bt1.checkSubTree(root,root2));
+//            bt1.setIndex();
+//            int[] c = {1,2,-1,4,-1,5,-1,6,-1,-1,3,-1,-1};
+//            Node root3 = bt1.insertPreOrder(c);
             bt1.setIndex();
-            int[] c = {1,2,-1,4,-1,5,-1,6,-1,-1,3,-1,-1};
-            Node root3 = bt1.insertPreOrder(c);
-            bt1.prettyDisplay(root3);
-            bt1.displayTop(root3);
+//            bt1.prettyDisplay(root3);
+//            bt1.displayTop(root3);
+//             bt1.printKthLevel(root3,6);
+                int[] d = {1,2,4,-1,-1,5,-1,-1,3,6,-1,-1,7,-1,-1};
+                Node root4 = bt1.insertPreOrder(d);
+//                bt1.prettyDisplay(root4);
+//                bt1.printKthLevelRecursion(root4,3);
+//                System.out.println(bt1.lowestCommonAncestor(root, 4, 5).key);
+//                System.out.println(bt1.lca(root, 4, 6).key);
+                    System.out.println(bt1.minDistance(root4,5,3));
     }
 }
 
@@ -190,17 +197,132 @@ class BinaryTree {
                 if (!hm1.containsKey(curr.hd)) hm1.put(curr.hd, curr.node);
                 if (curr.node.left!=null){
                     qi1.add(new Info1(curr.node.left, curr.hd-1));
-                    min = Math.min(curr.hd, curr.hd-1);
+                    min = Math.min(min, curr.hd-1);
                 }
                 if (curr.node.right!=null){
                     qi1.add(new Info1(curr.node.right, curr.hd+1));
-                    max = Math.max(curr.hd, curr.hd+1);
+                    max = Math.max(max, curr.hd+1);
                 }
             }
         }
         for (int i = min; i <= max; i++) {
             System.out.print(hm1.get(i).key+" ");
         }
+
+    }
+    void printKthLevel(Node root,int k){
+        if (root==null) return;
+        if (k==1) {
+            System.out.println(root.key);
+            return;
+        }
+        Queue<Node> q1 = new LinkedList<>();
+        q1.add(root);
+        q1.add(null);
+        int count = 1;
+        boolean check = false;
+        while (!q1.isEmpty()){
+            Node curr = q1.remove();
+            if (curr==null){
+                count++;
+                check = count == k;
+                if (!q1.isEmpty()){
+                    q1.add(null);
+                }
+            }else {
+                if (check){
+                    System.out.print(curr.key+" ");
+                }
+                if (curr.left!=null) q1.add(curr.left);
+                if (curr.right!=null) q1.add(curr.right);
+            }
+        }
+
+    }
+    void printKthLevelRecursion(Node node,int k){
+        if (node==null){
+            System.out.println("LL is empty");
+            return;
+        }
+        printKthLevelRecursion(node,k,1);
+    }
+    private void printKthLevelRecursion(Node node,int k,int count){
+        if (node==null) return;
+        if (count==k) {
+            System.out.print(node.key+" ");
+            return;
+        }
+        printKthLevelRecursion(node.left,k, count+1);
+        printKthLevelRecursion(node.right,k,count+1);
+    }
+    Node lowestCommonAncestor(Node node,int n1,int n2){
+            ArrayList<Node> a1 = new ArrayList<>();
+            ArrayList<Node> a2 = new ArrayList<>();
+            getPath(node,n1,a1);
+            getPath(node,n2,a2);
+            int i=0;
+            for (;i<a1.size() && i<a2.size();i++){
+                if (a1.get(i)!=a2.get(i)) break;
+            }
+            return a1.get(i-1);
+    }
+    boolean getPath(Node node,int n,ArrayList<Node> a1){
+        if(node==null) return false;
+        a1.add(node);
+        if (node.key==n) return true;
+        if (getPath(node.left,n,a1) || getPath(node.right,n,a1)) return true;
+        a1.removeLast();
+        return false;
+    }
+    Node lca(Node node,int n1,int n2){
+        if (node==null || node.key==n1 || node.key==n2) return node;
+        Node left = lca(node.left,n1,n2);
+        Node right = lca(node.right,n1,n2);
+        if (left==null) return right;
+        if (right==null) return left;
+        return node;
+    }
+    int minDistance(Node node,int n1,int n2){
+        if (node==null) return 0;
+        if (node.key==n1 || node.key==n2){
+            int height = height(node);
+        }
+        ArrayList<Node> a1 = new ArrayList<>();
+        ArrayList<Node> a2 = new ArrayList<>();
+        minDistance(node.left,n1,a1);
+        minDistance(node.right,n1,a2);
+        int i=0,j=0,count=0;
+        System.out.println(a1.size());
+        System.out.println(a2.size());
+//        while (i<a1.size() && j< a2.size()){
+            for (i=0,j=0;i<a1.size()&&j<a2.size();i++,j++) {
+                if (a1.get(i) != a2.get(j)) {
+                    System.out.println("count inside loop 1 = " + count);
+                    count = count + 2;
+                }
+            }
+//        }
+        while (i<a1.size()) {
+            System.out.println("count inside loop 2 = "+count);
+            count=count+2;
+            i++;
+        }
+        while (j<a2.size()) {
+            System.out.println("count inside loop 3 = "+count);
+            count=count+2;
+            j++;
+        }
+        return count;
+    }
+    private boolean minDistance(Node node,int n1,ArrayList<Node> a1){
+        if (node==null) return false;
+        if (node.key==n1) return true;
+        a1.add(node);
+//        boolean left = minDistance(node.left,n1,a1);
+//        boolean right = minDistance(node.right,n1,a1);
+        if (minDistance(node.left,n1,a1) || minDistance(node.right,n1,a1)) return true;
+        a1.removeLast();
+        return false;
     }
     void display(Node root){
         display(root,"");
