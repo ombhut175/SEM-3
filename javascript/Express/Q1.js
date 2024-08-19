@@ -21,7 +21,7 @@ mongoose.connect(connectionString).then(()=>{
         const users = await MokeData.find();
               res.setHeader('X-MyName','OmBhut');
                console.log(req.headers);
-           res.json(users);
+           res.status(203).json(users);
            res.end();
            }catch {
         console.log(Error);

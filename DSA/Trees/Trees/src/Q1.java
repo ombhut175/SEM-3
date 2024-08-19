@@ -39,10 +39,21 @@ public class Q1 {
                 int[] d = {1,2,4,-1,-1,5,-1,-1,3,6,-1,-1,7,-1,-1};
                 Node root4 = bt1.insertPreOrder(d);
 //                bt1.prettyDisplay(root4);
+                bt1.setIndex();
 //                bt1.printKthLevelRecursion(root4,3);
 //                System.out.println(bt1.lowestCommonAncestor(root, 4, 5).key);
 //                System.out.println(bt1.lca(root, 4, 6).key);
-                    System.out.println(bt1.minDistance(root4,5,3));
+//                    System.out.println(bt1.minDistance(root4,4,5));
+//                        System.out.println(bt1.minDistance2(root4,4,6));
+//                            System.out.println(bt1.kThAncestor(root4,4,2));
+//                                bt1.kThAncestor(root4,6,1);
+//                                    System.out.println("sum = "+bt1.sumTree(root4));
+//                                      bt1.prettyDisplay(root4);
+                     int[] e = {2,2,5,-1,-1,2,-1,-1,2,-1,-1};
+                     Node rootE = bt1.insertPreOrder(e);
+                     bt1.prettyDisplay(rootE);
+                    System.out.println(bt1.checkUnivalued(rootE));
+                    System.out.println(bt1.checkUnivalued(root4));
     }
 }
 
@@ -164,8 +175,6 @@ class BinaryTree {
         if(root1==null && root2==null) return true;
         if (root1==null || root2==null) return false;
         if(root1.key!=root2.key) return false;
-//        boolean leftTree = checkSubTree1(root1.left,root2.left);
-//        boolean rightTree = checkSubTree1(root1.right,root2.right);
         return checkSubTree1(root1.left,root2.left) && checkSubTree1(root1.right,root2.right);
     }
     private class Info1{
@@ -208,7 +217,6 @@ class BinaryTree {
         for (int i = min; i <= max; i++) {
             System.out.print(hm1.get(i).key+" ");
         }
-
     }
     void printKthLevel(Node root,int k){
         if (root==null) return;
@@ -282,47 +290,112 @@ class BinaryTree {
         if (right==null) return left;
         return node;
     }
-    int minDistance(Node node,int n1,int n2){
+
+        int minDistance(Node node,int n1,int n2){
         if (node==null) return 0;
         if (node.key==n1 || node.key==n2){
             int height = height(node);
         }
+        Node lca = lca(node,n1,n2);
         ArrayList<Node> a1 = new ArrayList<>();
         ArrayList<Node> a2 = new ArrayList<>();
-        minDistance(node.left,n1,a1);
-        minDistance(node.right,n1,a2);
+        getPath(lca,n1,a1);
+        getPath(lca,n2,a2);
         int i=0,j=0,count=0;
-        System.out.println(a1.size());
-        System.out.println(a2.size());
-//        while (i<a1.size() && j< a2.size()){
-            for (i=0,j=0;i<a1.size()&&j<a2.size();i++,j++) {
-                if (a1.get(i) != a2.get(j)) {
-                    System.out.println("count inside loop 1 = " + count);
-                    count = count + 2;
+//        System.out.println("size of a1 = "+a1.size());
+//        System.out.println(a2.size());
+        while (i<a1.size() && j<a2.size()){
+//            for (i=0,j=0;i<a1.size()&&j<a2.size();i++,j++) {
+                if (a1.get(i) == a2.get(j)) {
+//                    System.out.println("count inside loop 1 = " + count);
+                    count = count + 1;
+                }else {
+                    count+=2;
                 }
+//                System.out.println("a1.get(i) "+a1.get(i).key);
+//                System.out.println("a2.get(j) "+a2.get(j).key);
+                i++;
+                j++;
             }
 //        }
         while (i<a1.size()) {
-            System.out.println("count inside loop 2 = "+count);
-            count=count+2;
+//            System.out.println("count inside loop 2 = "+count);
+            count=count+1;
             i++;
         }
         while (j<a2.size()) {
-            System.out.println("count inside loop 3 = "+count);
-            count=count+2;
+//            System.out.println("count inside loop 3 = "+count);
+            count=count+1;
             j++;
         }
-        return count;
+        return count-1;
+    }
+    int minDistance2(Node node,int n1,int n2){
+        Node lca = lowestCommonAncestor(node,n1,n2);
+        int left = minDistance2(lca,n1);
+        int right = minDistance2(lca,n2);
+        return left+right;
+    }
+    private int minDistance2(Node node,int n1){
+            if (node==null) return -1;
+            if (node.key == n1) return 0;
+            int left = minDistance2(node.left,n1);
+            if (left!=-1) return left+1;
+            int right = minDistance2(node.right,n1);
+            if (right!=-1) return right+1;
+            return -1;
     }
     private boolean minDistance(Node node,int n1,ArrayList<Node> a1){
         if (node==null) return false;
-        if (node.key==n1) return true;
         a1.add(node);
+        if (node.key==n1) return true;
 //        boolean left = minDistance(node.left,n1,a1);
 //        boolean right = minDistance(node.right,n1,a1);
         if (minDistance(node.left,n1,a1) || minDistance(node.right,n1,a1)) return true;
         a1.removeLast();
         return false;
+    }
+    int kThAncestor(Node root,int n, int k){
+        if (root==null) return -1;
+        if (root.key==n) return 0;
+        int left = kThAncestor(root.left,n,k);
+        if (left+1==k) System.out.println(root.key);
+        if (left!=-1) return left+1;
+        int right = kThAncestor(root.right,n,k);
+        if (right+1==k) System.out.println(root.key);
+        if (right!=-1) return right+1;
+        return -1;
+    }
+    int sumTree(Node root){
+        if (root==null) {
+            return 0;
+        }
+        int left = sumTree(root.left);
+        int right =sumTree(root.right);
+        int sum = left+right;
+        int a = root.key;
+        root.key = sum;
+        return sum+a;
+    }
+    boolean checkUnivalued(Node root){
+        if (root==null){
+            System.out.println("tree is empty");
+            return false;
+        }
+        ArrayList<Node> a1 = new ArrayList<>();
+        graphInAl(root,a1);
+        for (int i = 0; i < a1.size(); i++) {
+            for (int j = i+1; j < a1.size(); j++) {
+                if (a1.get(i).key!=a1.get(j).key) return false;
+            }
+        }
+        return true;
+    }
+    private void graphInAl(Node root, ArrayList<Node> a1){
+            if(root==null) return;
+            a1.add(root);
+            graphInAl(root.left,a1);
+            graphInAl(root.right,a1);
     }
     void display(Node root){
         display(root,"");
