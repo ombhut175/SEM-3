@@ -339,6 +339,13 @@ class BinaryTree {
         }
         return count-1;
     }
+    Node constructFromArr(int[] a,int i){
+        if(i>=a.length) return null;
+        Node newNode = new Node(a[i]);
+        newNode.left = constructFromArr(a, 2*i+1);
+        newNode.right = constructFromArr(a, 2*i+2);
+        return newNode;
+    }
     int minDistance2(Node node,int n1,int n2){
         Node lca = lowestCommonAncestor(node,n1,n2);
         int left = minDistance2(lca,n1);
