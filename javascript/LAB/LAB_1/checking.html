@@ -1,0 +1,32 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            height: 200px;
+            width: 200px;
+            background-color: blue;
+            transition: opacity 1s linear;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+        <div id="hello">
+            hi
+        </div>
+        <script>
+               const hello = document.getElementById('hello');
+               hello.addEventListener('click', () => {
+                   hello.style.opacity = '0';
+                   setTimeout(() => {
+                       hello.style.display = 'none';
+                   }, 500); // Matches the duration of the transition
+               });
+        </script>
+</body>
+</html>

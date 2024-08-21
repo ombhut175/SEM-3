@@ -32,10 +32,12 @@ const userSchema = new mongoose.Schema({
 },{timestamps:true});
 
 const user = mongoose.model('User',userSchema);
-const connectionString = 'mongodb+srv://23010101033:Om110123@cluster0.tpipx.mongodb.net/';
+// const connectionString = 'mongodb+srv://23010101033:Om110123@cluster0.tpipx.mongodb.net/';
+require('dotenv').config();
+const connectionString = 'mongodb+srv://'+process.env.UserName+':'+process.env.Password +'@cluster0.tpipx.mongodb.net/';
 mongoose.connect(connectionString).then(()=>{
     const app = express();
-    const port = 3000;
+    // const port = 3000;
     app.use(bodyParser.urlencoded({extended:false}));
     app.get('/users',async (req,res)=>{
         const dbUser =  await user.find().sort({id:1});
@@ -105,7 +107,7 @@ mongoose.connect(connectionString).then(()=>{
     })
 
 
-    app.listen(port,()=>{
-        console.log('server started at '+port);
+    app.listen(process.env.PORT,()=>{
+        console.log('server started at '+process.env.PORT);
     })
 }).catch((err)=> console.log('error in mongo'+err));

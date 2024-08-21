@@ -52,8 +52,9 @@ public class Q1 {
                      int[] e = {2,2,5,-1,-1,2,-1,-1,2,-1,-1};
                      Node rootE = bt1.insertPreOrder(e);
                      bt1.prettyDisplay(rootE);
-                    System.out.println(bt1.checkUnivalued(rootE));
-                    System.out.println(bt1.checkUnivalued(root4));
+                    // System.out.println(bt1.checkUnivalued(rootE));
+                    // System.out.println(bt1.checkUnivalued(root4));
+                    System.out.println(bt1.checkCopy(root, root));
     }
 }
 
@@ -165,6 +166,14 @@ class BinaryTree {
 //        int right = countNodes(node.right);
 //        return left+right+1;
 //    }
+    boolean checkCopy(Node node1 ,Node node2){
+        if(node1!=node2) return false;
+        if(node1==null && node2==null) return true;
+        if(node1==null && node2!=null || node1!=null && node2==null) return false;
+        // boolean left = checkCopy(node1.left, node2.left);
+        // boolean right = checkCopy(node1.right, node2.right);
+        return checkCopy(node1.left, node2.left)&&checkCopy(node1.right, node2.right);
+    }
     boolean checkSubTree(Node root1,Node root2){
         if (root2==null) return true;
         if (root1==null) return false;
@@ -344,6 +353,16 @@ class BinaryTree {
             int right = minDistance2(node.right,n1);
             if (right!=-1) return right+1;
             return -1;
+    }
+    boolean isSymmetric(Node root) {
+        if(root==null) return true;
+        return checkSymmetry(root.left,root.right);
+    }
+    private boolean checkSymmetry(Node left,Node right){
+        if(left==null && right==null) return true;
+        if(left==null && right!=null || left!=null && right==null) return false;
+        if(left.val!=right.val) return false;
+        return checkSymmetry(left.left,right.right)&&checkSymmetry(left.right,right.left);
     }
     private boolean minDistance(Node node,int n1,ArrayList<Node> a1){
         if (node==null) return false;
