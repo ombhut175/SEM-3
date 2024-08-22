@@ -83,55 +83,19 @@ class ThreadedBinaryTree{
 			thTraversalUsingRecursion(node.right);
 		}
 	}
-//	void thTraversalUsingLoop(ThNode root,ThNode head) {
-//		if (root == null) return;
-//
-//		ThNode current = leftmostNode(root);
-//
-//		while (current != head) {
-//			System.out.print(current.key + " ");
-//
-//			if (current.rth) {
-//				// If right thread, go to the right node
-//				current = current.right;
-//			} else {
-//				// Otherwise, find the leftmost node in the right subtree
-//				current = leftmostNode(current.right);
-//			}
-//		}
-//	}
-
-	// Helper method to find the leftmost node
-//	private ThNode leftmostNode(ThNode node) {
-//		if (node == null) return null;
-//
-//		while (node != null && !node.lth) {
-//			node = node.left;
-//		}
-//		return node;
-//	}
 	void thTraversalUsingLoop(ThNode node,ThNode head){
 		if (node==null) return;
 		ThNode curr = leftMostNode(node);
 		while (curr!=head){
 			System.out.print(curr.key+" ");
-			if (curr.rth){
-				curr=curr.right;
-			}else{
-				curr=leftMostNode(curr.right);
-			}
+			if (curr.rth) curr=curr.right;
+			else curr=leftMostNode(curr.right);
 		}
 	}
 	private ThNode leftMostNode(ThNode node){
 		if (node==null) return null;
-		while (!node.lth){
-			node=node.left;
-		}
+		while (!node.lth) node=node.left;
 		return node;
-	}
-	void traverseUsingLoop(ThNode root){
-		if (root==null) return;
-
 	}
 	void prettyDisplay(ThNode root){
 		prettyDisplay(root,0);
