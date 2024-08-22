@@ -44,7 +44,7 @@ mongoose.connect(connectionString).then(()=>{
         const html = `<ul>
                         ${dbUser.map((user)=>`<li>${user.id} - ${user.first_name} - ${user.email} </li>`)
                             .join('')}
-                        </ul>>`
+                        </ul>`
         res.send(html);
     })
     .get('/users/:id',async (req,res)=>{
