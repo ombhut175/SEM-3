@@ -34,7 +34,7 @@ const userSchema = new mongoose.Schema({
 const user = mongoose.model('User',userSchema);
 // const connectionString = 'mongodb+srv://23010101033:Om110123@cluster0.tpipx.mongodb.net/';
 require('dotenv').config();
-const connectionString = 'mongodb+srv://'+process.env.UserName+':'+process.env.Password +'@cluster0.tpipx.mongodb.net/';
+const connectionString = 'mongodb+srv://'+process.env.UNAME+':'+process.env.PASS +'@cluster0.tpipx.mongodb.net/';
 mongoose.connect(connectionString).then(()=>{
     const app = express();
     // const port = 3000;

@@ -9,8 +9,8 @@ const connectionString = 'mongodb+srv://'+process.env.UserName+':'+process.env.P
 mongoose.connect(connectionString).then(()=>{
     const app = express();
     app.use(bodyParser.urlencoded({extended:false}));
-    app.use('/users',(req,res,next)=>{
-       fs.appendFile('log.txt',`\nthis is todays date ${Date.now()} this is the method name ${req.method} this is my ip ${req.ip}:`,(err,data)=>{
+    app.use((req,res,next)=>{
+       fs.appendFile('log.txt',`\nthis is today's date ${Date.now()} this is the method name ${req.method} this is my ip ${req.ip}:`,(err,data)=>{
            next();
        });
     });
