@@ -1,10 +1,10 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const Faculty = require('./Faculty');
-const bodyParse = require('body-parser')
-const connectionString = 'mongodb+srv://23010101033:Om110123@cluster0.tpipx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
-// const connectionString = 'mongodb+srv://:<password>@cluster0.tpipx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+const bodyParse = require('body-parser');
+require('dotenv').config();
 
+const connectionString = 'mongodb+srv://'+process.env.uName+':'+process.env.Pass+'@cluster0.tpipx.mongodb.net/';
 mongoose.connect(connectionString).then(()=>{
     const app = express();
     app.use(bodyParse.urlencoded({extended:false}));
@@ -18,15 +18,25 @@ mongoose.connect(connectionString).then(()=>{
         if (!faculty) return res.status(404).json({msg:'id not exist'});
         res.send(faculty);
     });
+    app.get('/faculties/search/:text',async(req,res)=>{
+        const answer =await Faculty.find({
+            "Name":{
+                $regex : req.params.text
+            }
+        });
+         res.json(answer);
+    });
     app.post('/faculties',async(req,res)=>{
+        // console.log(...req.body);
         if (!req.body.FacultyId || !req.body.Name || !req.body.City) {
             return res.status(400).json({msg:'all fields required'});
         }
         const faculty = new Faculty({
-            FacultyId: req.body.FacultyId,
-            Name: req.body.Name,
-            City: req.body.City
-        })
+            // FacultyId: req.body.FacultyId,
+            // Name: req.body.Name,
+            // City: req.body.City
+            ...req.body
+        });
         await faculty.save();
         res.send(await Faculty.find());
     });
@@ -53,7 +63,10 @@ mongoose.connect(connectionString).then(()=>{
     //         res.status(500).send({ error: "An error occurred while deleting the faculty" });
     //     }
     // });
+    
     app.listen(3000,()=>{
-        console.log('server is listening at 3000');
+        console.log('server is listening at '+3000);
     })
+}).catch((error)=>{
+    console.log(error);
 })
