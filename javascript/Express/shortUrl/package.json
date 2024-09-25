@@ -18,6 +18,6 @@
     "nanoid": "^5.0.7",
     "short": "^2.6.0",
     "shortid": "^2.2.16",
-    "shorturl": "^0.0.3"
+    "shorturl": "file:"
   }
 }
