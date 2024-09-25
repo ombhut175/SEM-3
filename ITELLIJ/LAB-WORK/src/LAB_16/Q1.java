@@ -28,8 +28,10 @@ class Graph{
 		h1 = new HashMap<>();
 	}
 	void addEdge(int u,int v){
-		if (!h1.containsKey(u)) h1.put(u,new LinkedList<>());
-		if (!h1.containsKey(v)) h1.put(v,new LinkedList<>());
+//		if (!h1.containsKey(u)) h1.put(u,new LinkedList<>());
+//		if (!h1.containsKey(v)) h1.put(v,new LinkedList<>());
+		h1.putIfAbsent(u,new LinkedList<>());
+		h1.putIfAbsent(v,new LinkedList<>());
 		h1.get(u).add(v);
 		h1.get(v).add(u);
 	}
