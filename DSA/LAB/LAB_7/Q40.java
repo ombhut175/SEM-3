@@ -6,7 +6,7 @@ public class Q40 {
     static int i=-1;
     static char nextchar (String s){
         if(i==s.length()){
-            return '5';
+            return ' ';
         }
         i++;
         return s.charAt(i);

@@ -9,10 +9,11 @@ public class Q10 {
         Scanner sc = new Scanner(System.in);
         System.out.println("enter days");
         int n= sc.nextInt();
-        int year = n/365;
-        int remainingYear = n-(365*year);
-        int week = remainingYear / 7;
-        int day = remainingYear - (7*week);
+        int year = n / 365;
+        int remainingDays = n % 365;  
+        int week = remainingDays / 7;
+        int day = remainingDays % 7;  
+            
         System.out.println(year + " year, "+week+" week, "+day+" days");
     }
 }
